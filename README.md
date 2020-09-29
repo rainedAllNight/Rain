@@ -4,7 +4,7 @@
 
 Rain is a simple command-line util to auto generate codable model  from json(一个根据json自动生成codable model的命令行工具)
 
-**Write by Swift**
+--Write with Swift
 
 # Install
 
@@ -12,7 +12,6 @@ Rain is a simple command-line util to auto generate codable model  from json(一
 > git clone https://github.com/rainedAllNight/Rain.git
 > cd Rain
 > ./install
-
 ```
 You need  enter the password when prompted(get the permissions to add ruby file to **/usr/local/**)
 
@@ -25,7 +24,6 @@ Just navigate to your project folder, then:
 
 ```
 > rain -w
-
 ```
 
 It will init workspace of the rain, and there will be an additional directory named "Rain" for your project
@@ -44,14 +42,13 @@ then navigate to your project folder, then:
 
 ```
 > rain
-
 ```
 or 
 
 ```
 > rain -n UserModel
-
 ```
+**if you use command-line arguments, it will ignores the configuration with the same name in the workspace**
 
 ## Run with command line
 
