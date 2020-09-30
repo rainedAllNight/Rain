@@ -1,4 +1,4 @@
-# Rain
+![](https://github.com/rainedAllNight/Rain/blob/master/rain%402x.png)
 
 # What 
 
