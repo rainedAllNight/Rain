@@ -27,7 +27,7 @@ public struct RainKit {
     private var subModelDic = [String: Any]()
     ///存储codingKey的映射关系
     private var codingKeysMapping = [String: String]()
-    private var codingDefines = ""
+    private var codingCaseDefines = ""
     private var actionMode: ActionMode
     
     // MARK: - Public
@@ -67,7 +67,7 @@ public struct RainKit {
         }
     }
     
-    // MARK: - Get code string
+    // MARK: - Get Model Defined
     
     /// json to dictionary
     /// - Returns: dictionary
@@ -155,14 +155,15 @@ public struct RainKit {
     mutating func getStruct(_ structName: String, dic: [String: Any]?) -> String {
         let property = getPropertyDefine(dic)
         let `struct` = """
-        struct \(structName) {
+        struct \(structName): Codable {
         \(property)
         }
         \n
         """
-        let codabe = getCodabeDefine(structName, map: codingKeysMapping)
+        if let codabe = getCodingCaseDefine(structName, map: codingKeysMapping) {
+            codingCaseDefines += codabe
+        }
         codingKeysMapping.removeAll()
-        codingDefines += codabe
         return `struct`
     }
     
@@ -173,14 +174,18 @@ public struct RainKit {
         while !subModelDic.isEmpty {
             main += getSubModelDefines()
         }
-        return main + codingDefines
+        return main + codingCaseDefines
     }
 }
 
+// MARK: - Coding Case
+
 fileprivate extension RainKit {
-    func getCodabeDefine(_ struct: String, map: [String: String]) -> String {
+    func getCodingCaseDefine(_ struct: String, map: [String: String]) -> String? {
+        let needCodingCase = map.contains(where: {$0 != $1})
+        guard needCodingCase else {return nil}
         return """
-        extension \(`struct`): Codable {
+        extension \(`struct`) {
             private enum CodingKeys: String, CodingKey {
         \(getCodingKeysMapping(map))
             }
@@ -200,24 +205,7 @@ fileprivate extension RainKit {
     }
 }
 
-fileprivate extension String {
-    func camelCase(with separator: Character = "_") -> String {
-        let strings = self.split(separator: separator)
-        return strings.reduce("") { (result, sub) -> String in
-            if result.isEmpty {
-                return String(sub)
-            } else {
-                return result + sub.capitalized
-            }
-        }
-    }
-    
-    var headUppercased: String {
-        guard !isEmpty else {return ""}
-        let range = ...startIndex
-        return replacingCharacters(in: range, with: self.first!.uppercased())
-    }
-}
+// MARK: - Workspace
 
 public extension RainKit {
     static func initWorkspace() {
@@ -297,3 +285,5 @@ public extension RainKit {
         fileHandle?.closeFile()
     }
 }
+
+

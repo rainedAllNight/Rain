@@ -2,11 +2,10 @@
 
 # What 
 
-Rain is a simple command-line util to auto generate codable model  from json(一个根据json自动生成codable model的命令行工具)
-
---Write with Swift
+Rain is a simple command-line util to auto generate codable model  from json(一个根据json自动生成codable model的命令行工具), write with Swift
 
 # Install
+You need Swift Package Manager (as well as swift compiler) installed in your macOS; generally you are prepared if you have the latest Xcode installed.
 
 ```
 > git clone https://github.com/rainedAllNight/Rain.git
@@ -30,7 +29,7 @@ It will init workspace of the rain, and there will be an additional directory na
 
 You will see these files later
 
-* source.json:  The json that you want to decode
+* source.json:  the json that you want to decode
 * rain.yaml: the configuration file of the command unit (use command-line arguments first)
 * xxx.swift: the  result model
 
@@ -80,8 +79,8 @@ please provide executable permissions for  "run_rain.sh"
 
 ```
 > chmod +x run_rain.sh
-
 ```
+
 
 
 
