@@ -1,4 +1,4 @@
-![](https://github.com/rainedAllNight/Rain/blob/master/rain%402x.png)
+![](https://github.com/rainedAllNight/Rain/blob/master/rain_title%402x.png)
 
 # What 
 
