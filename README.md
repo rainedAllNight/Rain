@@ -2,7 +2,7 @@
 
 # What 
 
-Rain is a simple command-line util to auto generate codable model  from json(一个根据json自动生成codable model的命令行工具), write with Swift
+Rain is a simple command-line util written in Swift that auto generate codable model  from json(一个根据json自动生成codable model的命令行工具)
 
 # Install
 You need Swift Package Manager (as well as swift compiler) installed in your macOS; generally you are prepared if you have the latest Xcode installed.

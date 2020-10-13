@@ -280,7 +280,7 @@ public extension RainKit {
         guard let ignores = gitignores, !ignores.contains(gitignore) else {return}
         let fileHandle = FileHandle.init(forWritingAtPath: gitignorePath)
         fileHandle?.seekToEndOfFile()
-        guard let data = "Rain/".data(using: .utf8) else {return}
+        guard let data = gitignore.data(using: .utf8) else {return}
         fileHandle?.write(data)
         fileHandle?.closeFile()
     }
